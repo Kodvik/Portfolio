@@ -1,0 +1,673 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{graphicx} 
+\usepackage{rotating}
+\usepackage{amsmath}
+
+\title{Folha de Respostas Lista06-ACII - Exercícios}
+\author{Edgard de Paiva Melo Filho}
+\date{11/Novembro/2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Parte 1 - Questões 1 a 18}
+
+\begin{enumerate}[label=\textbf{Q.\arabic*}]
+%----------------------------------------------- PARTE 1 - RESPOSTAS -------------------------------------------------------    
+    \item \: \linebreak %1
+    \begin{flushleft}
+        \textbf{A}. um arquivo de texto que contém instruções de linguagem de programação.
+    \end{flushleft}
+
+    \item \: \linebreak %2
+    \begin{flushleft}
+        \textbf{B}. uma parte do processador que possui um padrão de bits.
+    \end{flushleft}
+
+    \item \: \linebreak %3
+    \begin{flushleft}
+        \textbf{A}. \#.
+    \end{flushleft}
+   
+    \item \: \linebreak %4
+    \begin{flushleft}
+        \textbf{C}. 32.
+    \end{flushleft}
+    
+    \item \: \linebreak %5
+    \begin{flushleft}
+        \textbf{D}. parte do processador que contém o endereço da próxima instrução de máquina para ser obtida. 
+    \end{flushleft}
+    (O contador de programa (PC) é um registrador em um processador que mantém o endereço da próxima instrução a ser buscada e executada).
+
+    \newpage
+    
+    \item \: \linebreak %6
+    \begin{flushleft}
+        \textbf{C}. 4. 
+    \end{flushleft}
+    (o contador de programa (PC - Program Counter) é geralmente incrementado em 4 para apontar para a próxima instrução na memória).
+
+    \item \: \linebreak %7
+    \begin{flushleft}
+        \textbf{D}. uma declaração que diz o montador algo sobre o que o programador quer, mas não corresponde diretamente a uma instrução de máquina. 
+    \end{flushleft}
+    (Diretivas em linguagem de montagem guiam o montador no processamento do código, sem serem traduzidas diretamente em instruções de máquina. A diretiva .text, por exemplo, indica o início da seção de código em assembly).
+
+    \item \: \linebreak %8
+    \begin{flushleft}
+        \textbf{D}. um nome usado no código-fonte em linguagem assembly para um local na memória. 
+    \end{flushleft}
+    (Um endereço simbólico refere-se a um nome simbólico atribuído a um local específico na memória para facilitar a legibilidade e manutenção do código).
+
+    \item \: \linebreak %9
+    \begin{flushleft}
+        \textbf{B}. 0x00400000. 
+    \end{flushleft}
+    (Alocação padrão no MIPS se inicia na posição 0x00400000)
+
+    \item \: \linebreak %10
+    \begin{flushleft}
+        \textbf{A}. operando imediato. 
+    \end{flushleft}
+    (Quando uma instrução de máquina possui uma constante como um dos operandos, esse tipo de operando é comumente chamado de "operando imediato").
+
+    \item \: \linebreak %11
+    \begin{flushleft}
+        \textbf{B}. operação bitwise. 
+    \end{flushleft}
+    (é feita um operação lógica executada entre bits de cada coluna dos operandos para produzir um bit de resultado para cada coluna).
+
+    \newpage
+    
+    \item \: \linebreak %12
+    \begin{flushleft}
+        \textbf{D}. Cada um dos registradores deve possuir 32 bits. 
+    \end{flushleft}
+    (por se tratar de uma maquina 32 bits, os registradores devem possuir 32bits).
+
+    \item \: \linebreak %13
+    \begin{flushleft}
+        \textbf{B}. Os dados são estendidos em zero à esquerda por 16 bits.
+    \end{flushleft}
+    (por exemplo, caso se tenha 0x1234, para utilizar na plataforma MIPS, deve ser utilizado 0x00001234).
+
+    \item \: \linebreak %14
+    \begin{flushleft}
+        \textbf{C}. ori \$5,\$0,48. 
+    \end{flushleft}
+    (o registrador 5, recebera o resultado de uma operação lógica OR, entre 0 (0x00000000) e 48 decimal (0x00000030)).
+
+    \item \: \linebreak %15
+    \begin{flushleft}
+        \textbf{B}. Sim. 
+    \end{flushleft}
+
+    \item \: \linebreak %16
+    \begin{flushleft}
+        \textbf{B}.  andi \$8,\$8,0xFF. 
+    \end{flushleft}
+    (fazendo uma and entre o registrador e 0xFF (mesmo que 0x00000000FF) mantém-se os bytes menos significativos intactos e limpa o resto do registrador).
+
+    \item \: \linebreak %17
+    \begin{flushleft}
+        \textbf{A}. Todos os bits em zero. 
+    \end{flushleft}
+    (uma vez que a logica XOR somente envia 1 caso os operandos sejam diferentes, se um registrador é operado com ele mesmo, a saida será todos os bits em zero).
+
+    \newpage
+    
+    \item \: \linebreak %18
+    \begin{flushleft}
+        \textbf{A}. Não. Diferentes instruções de máquina possuem campos diferentes. 
+    \end{flushleft}
+    (instruções de maquina tem diferentes campos, operações add e sub por exemplo, a pesar de possuirem codigos similares, possuem um campo de seleção de modo).
+    
+\end{enumerate}
+
+\newpage
+
+\section*{Parte 2 - Programas de Assembly MIPS}
+
+\begin{enumerate}[label=\textbf{Programa \arabic*}]
+
+    %----------------------------------------------- ENUNCIADOS DOS PROGRAMAS PARTE2 -------------------------------------------------------
+    
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{programa 1}\: (add, addi, sub, lógicas)\linebreak
+        \{\linebreak
+            a =2;\linebreak
+            b =3;\linebreak
+            c =4;\linebreak
+            d =5;\linebreak
+            x = (a+b) - (c+d);\linebreak
+            y = a – b + x;\linebreak
+            b = x – y;\linebreak
+        \}
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 2}\: (add, addi, sub, lógicas)\linebreak
+        {\linebreak
+            x = 1;\linebreak
+            y = 5*x + 15;\linebreak
+        }\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 3}\: (add, addi, sub, lógicas)\linebreak
+            {\linebreak
+            x = 3;\linebreak
+            y = 4 ;\linebreak
+            z = ( 15*x + 67*y)*4\linebreak
+            }\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 4}\:\linebreak
+            {\linebreak
+            x = 3;\linebreak
+            y = 4 ;\linebreak
+            z = ( 15*x + 67*y)*4\linebreak
+            }\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 5}\:\linebreak
+            {\linebreak
+            x = 100000;\linebreak
+            y = 200000;\linebreak
+            z = x+y\linebreak
+            }\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 6}\:\linebreak
+            {\linebreak
+            x = maior inteiro possivel;\linebreak
+            y = 300000;\linebreak
+            z = x-4y\linebreak
+            }\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 7}\:\linebreak
+            Considere a seguinte instrução iniciando um programa:
+            ori \$8, $0, 0x01
+            Usando apenas instruções reg-reg lógicas e/ou instruções de deslocamento (sll, srl e sra), continuar o programa de forma que ao final, tenhamos o seguinte conteúdo no registrador $8: \$8 = 0xFFFFFFFF
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 8}\:\linebreak
+            Inicialmente escreva um programa que faça:\linebreak
+            \$8 = 0x12345678.\linebreak
+            A partir do registrador \$8 acima, usando apenas instruções lógicas (or, ori, and, andi, xor, xori) e instruções de deslocamento (sll, srl e sra), você deverá obter os seguintes valores nos respectivos registradores:\linebreak
+            \$9 = 0x12\linebreak
+            \$10 = 0x34\linebreak
+            \$11 = 0x56\linebreak
+            \$12 = 0x78\linebreak
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 9}\:\linebreak
+            Considere a memória inicial da seguinte forma:\linebreak
+            .text\linebreak
+            .data\linebreak
+            x1: .word 15\linebreak
+            x2: .word 25\linebreak
+            x3: .word 13\linebreak
+            x4: .word 17\linebreak
+            soma: .word -1\linebreak
+            Escrever um programa que leia todos os números, calcule e substitua o valor da variável soma por este valor.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 10}\:\linebreak
+        Considere o seguinte programa: y = 127x – 65z + 1. Faça um programa que calcule o valor de y conhecendo os valores de x e z. Os valores de x e z estão armazenados na memória e, na posição imediatamente a seguir, o valor de y deverá ser escrito, ou seja:\linebreak
+        .data
+        x: .word 5
+        z: .word 7
+        y: .word 0 \# esse valor deverá ser sobrescrito após a execução do programa.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 11}\:\linebreak
+        Considere o seguinte programa: y = x – z + 300000\linebreak
+        Faça um programa que calcule o valor de y conhecendo os valores de x e z. Os valores de x e z estão armazenados na memória e, na posição imediatamente a seguir, o valor de y deverá ser escrito, ou seja:\linebreak
+        .data\linebreak
+        x: .word 100000\linebreak
+        z: .word 200000\linebreak
+        y: .word 0 \# esse valor deverá ser sobrescrito após a execução do programa.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 12}\:\linebreak
+        Considere a seguinte situação:\linebreak
+        int ***x;\linebreak
+        onde x contem um ponteiro para um ponteiro para um ponteiro para um inteiro.\linebreak
+        Nessa situação, considere que a posição inicial de memória contenha o inteiro em questão.\linebreak
+        Coloque todos os outros valores em registradores, use os endereços de memória que quiser dentro do espaço de endereçamento do Mips.\linebreak
+        Resumo do problema:\linebreak
+        k = MEM [ MEM [MEM [ x ] ] ].\linebreak
+        Crie um programa que implemente a estrutura de dados acima, leia o valor de K, o multiplique por 2 e o reescreva no local correto conhecendo-se apenas o valor de x.
+    \end{flushleft}   
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 13}\:\linebreak
+            Escreva um programa que leia um valor A da memória, identifique se o número é negativo ou não e encontre o seu módulo. O valor deverá ser reescrito sobre A.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 14}\:\linebreak
+            Escreva um programa que leia um valor A da memória, identifique se o número é par ou não.Um valor deverá ser escrito na segunda posição livre da memória (0 para par e 1 para ímpar).
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 15}\:\linebreak
+            Escrever um programa que crie um vetor de 100 elementos na memória onde vetor[i] = 2*i + 1. Após a última posição do vetor criado, escrever a soma de todos os valores armazenados do vetor. Use o MARS para verificar a quantidade de instruções conforme o tipo (ULA, Desvios, Mem ou Outras)
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 16}\:\linebreak
+            Escreva um programa que avalie a expressão: (x*y)/z. Use x = 1600000 (=0x186A00), y = 80000 (=0x13880), e z = 400000 (=0x61A80). Inicializar os registradores com os valores acima.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 17}\:\linebreak
+            Para a expressão a seguir, escreva um programa que calcule o valor de k:\linebreak
+            k = x * y (Você deverá realizar a multiplicação através de somas!)\linebreak
+            O valor de x deve ser lido da primeira posição livre da memória e o valor de y deverá lido da segunda posição livre. O valor de k, após calculado, deverá ainda ser escrito na terceira posição livre da memória.
+    \end{flushleft}
+
+    \item \: \linebreak
+    \begin{flushleft}
+        \textbf{//programa 18}\:\linebreak
+            Para a expressão a seguir, escreva um programa que calcule o valor de k: k = x y
+            Obs: Você poderá utilizar o exercício anterior.
+            O valor de x deve ser lido da primeira posição livre da memória e o valor de y deverá lido da segunda posição livre. O valor de k, após calculado, deverá ainda ser escrito na terceira posição livre da memória.
+            Dê um valor para x e y (dê valores pequenos !!) e use o MARS para verificar a quantidade de
+            instruções conforme o tipo (ULA, Desvios, Mem ou Outras)
+    \end{flushleft}
+    
+
+    %----------------------------------------------- SCREENSHOTS DOS PROGRAMAS -------------------------------------------------------
+
+    %questao 1   
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa1_codigo.png}
+        \caption{código programa 1}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+            \includegraphics[width=1.1\linewidth]{Programa1_execucao.png}
+            \caption{execução do programa 1}        
+    \end{sidewaysfigure}
+
+    %questao 2
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa2_codigo.png}
+        \caption{código programa 2}    
+    \end{figure}
+    
+    \begin{sidewaysfigure}
+            \includegraphics[width=1.1\linewidth]{Programa2_execucao.png}
+            \caption{execução do programa 2}
+    \end{sidewaysfigure}
+
+    %questao 3
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa3_codigo.png}
+        \caption{código programa 3}    
+    \end{figure}
+    
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa3_execucao.png}
+        \caption{execução do programa 3}
+    \end{sidewaysfigure}
+    
+    %questao 4
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa4_codigo.png}
+        \caption{código programa 4}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa4_execucao.png}
+        \caption{execução do programa 4}
+    \end{sidewaysfigure}
+
+    %questao 5
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa5_codigo.png}
+        \caption{código programa 5}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa5_execucao.png}
+        \caption{execução do programa 5}
+    \end{sidewaysfigure}
+    
+    %questao 6
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa6_codigo.png}
+        \caption{código programa 6}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa6_execucao.png}
+        \caption{execução do programa 6}
+    \end{sidewaysfigure}
+
+    %questao 7
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa7_codigo.png}
+        \caption{código programa 7}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa7_execucao.png}
+        \caption{execução do programa 7}
+    \end{sidewaysfigure}
+
+    %questao 8
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa8_codigo.png}
+        \caption{código programa 8}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa8_execucao.png}
+        \caption{execução do programa 8}
+    \end{sidewaysfigure}
+
+    %questao 9
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa9_codigo.png}
+        \caption{código programa 9}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa9_execucao.png}
+        \caption{execução do programa 9}
+    \end{sidewaysfigure}
+
+    %questao 10
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa10_codigo.png}
+        \caption{código programa 10}
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa10_execucao.png}
+        \caption{execução do programa 10}
+    \end{sidewaysfigure}
+
+    %questao 11
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa11_codigo.png}
+        \caption{código programa 11}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa11_execucao.png}
+        \caption{execução do programa 11}        
+    \end{sidewaysfigure}
+
+    %questao 12
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa12_codigo.png}
+        \caption{código programa 12}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa12_execucao.png}
+        \caption{execução do programa 12}        
+    \end{sidewaysfigure}
+
+    %questao 13
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa13_codigo.png}
+        \caption{código programa 13}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa13_execucao.png}
+        \caption{execução do programa 13}        
+    \end{sidewaysfigure}
+
+    %questao 14
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa14_codigo.png}
+        \caption{código programa 14}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa14_execucao.png}
+        \caption{execução do programa 14}        
+    \end{sidewaysfigure}
+
+    %questao 15
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa15_codigo.png}
+        \caption{código programa 15}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa15_execucao.png}
+        \caption{execução do programa 15}        
+    \end{sidewaysfigure}
+
+    %questao 16
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa16_codigo.png}
+        \caption{código programa 16}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa16_execucao.png}
+        \caption{execução do programa 16}        
+    \end{sidewaysfigure}
+
+    %questao 17
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa17_codigo.png}
+        \caption{código programa 17}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa17_execucao.png}
+        \caption{execução do programa 17}        
+    \end{sidewaysfigure}
+
+    %questao 18
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Programa18_codigo.png}
+        \caption{código programa 18}        
+    \end{figure}
+
+    \begin{sidewaysfigure}
+        \centering
+        \includegraphics[width=1.1\linewidth]{Programa18_execusao.png}
+        \caption{execução do programa 18}        
+    \end{sidewaysfigure}
+
+    \newpage
+\end{enumerate}
+
+ %----------------------------------------------- Perguntas do meio do arquivo -------------------------------------------------------
+
+\section*{Parte 3 - Perguntas Teoricas e Analize de Soluções}
+
+\begin{enumerate}[label=\textbf{Q.\arabic*}]
+    
+    \item \: \linebreak %1
+    \begin{flushleft}
+        \textbf{C}. 64.
+    \end{flushleft}
+    (Se somados, dois numeros de 32 bits, o produto resultante pode exigir até 64 bits para ser representado sem perda de informação).
+
+    \item \: \linebreak %2
+    \begin{flushleft}
+        \textbf{B}. hi e lo.
+    \end{flushleft}
+    (no mips ao fazer uma multiplicação O registrador hi (high) armazena os bits mais significativos do resultado, enquanto o registrador lo (low) armazena os bits menos significativos).
+
+    \item \: \linebreak %3
+    \begin{flushleft}
+        \textbf{A}. mult.
+    \end{flushleft}
+    (para multiplicar dois registradores, utiliza-se mult como instrução).
+
+    \item \: \linebreak %4
+    \begin{flushleft}
+        \textbf{C}. mflo.
+    \end{flushleft}
+    (como o nome diz, mflo significa move from lo).
+
+    \item \: \linebreak %5
+    \begin{flushleft}
+        \textbf{B}. 32.
+    \end{flushleft}
+    (ao dividir dois numeros de 32 bits o maior numero que pode-se ter é de 32 bits, pois seria a divisão do maior pelo menor).
+
+    \item \: \linebreak %6
+    \begin{flushleft}
+        \textbf{B}. lo.
+    \end{flushleft}
+    (apos uma divisão no MIPS, o lo armazena o quociente e o hi o resto).
+
+    \item \: \linebreak %7
+    \begin{flushleft}
+        \textbf{D}. div.
+    \end{flushleft}
+    (para divisão dois registradores, utiliza-se div como instrução).
+
+    \item \: \linebreak %8
+    \begin{flushleft}
+        \textbf{B}. 0010 0110.
+    \end{flushleft}
+    (ao fazer um "sra $s0,$s0,2" será inserido 2 zeros a esquerda, gerando o padrão visto).
+
+    \item \: \linebreak %9
+    \begin{flushleft}
+        \textbf{A}. Se o inteiro for unsigned, o shift o divide por 2. Se o inteiro for signed, o shift o divide por 2.
+    \end{flushleft}
+
+    \item \: \linebreak %10
+    \begin{flushleft}
+        \textbf{A}. ori \$3,\$0,3\linebreak
+    mult \$8,\$3\linebreak
+    mflo \$9\linebreak
+    addi \$9,\$9,7\linebreak
+    \end{flushleft}
+    (primeira linha coloca 3 em \$3,segunda linha multiplica x por 3, terceira linha retira o resultado do lo, e 
+    quarta linha adiciona 7 ao valor da multiplicação).
+    
+    \newpage    
+\end{enumerate}
+
+%----------------------------------------------- ENUNCIADOS DOS PROGRAMAS PARTE4 -------------------------------------------------------
+
+\section*{Parte 4 - Ultimos 3 programas}
+\begin{flushleft}
+    \textbf{//programa 19}\:\linebreak
+        Escrever um programa que leia dois números da memória, a primeira e segunda posições respectivamente (os coloque em \$s0 e \$s1) e 
+        determine a quantidade de bits significantes de cada um. Coloque as respostas em \$t0 e \$t1, a partir desse resultado faça a multiplicação. 
+        Caso o número de bits significantes de ambos seja menor do que 32 a resposta deverá estar apenas em \$s2, caso
+        contrário a resposta estará em \$s2 e \$s3 (LO e HI respectivamente).
+\end{flushleft}
+
+\begin{flushleft}
+    \textbf{//programa 20}\:\linebreak
+        \begin{equation}
+            y =
+            \begin{cases}
+              x^4+x^3-2x^2, \text{se x for par}\\
+              x^5–x^3+1, \text{se x for impar}
+            \end{cases}       
+        \end{equation}
+        Os valores de x devem ser lidos da primeira posição livre da memória e o valor de y deverá ser escrito na segunda posição livre.
+\end{flushleft}
+
+\begin{flushleft}
+    \textbf{//programa 21}\:\linebreak
+        \begin{equation}
+            y =
+            \begin{cases}
+              x^3+1, \text{se x >0}\\
+              x^4-1, \text{se x<=0}
+            \end{cases}       
+        \end{equation}
+        Os valores de x devem ser lidos da primeira posição livre da memória e o valor de y deverá ser escrito na segunda posição livre.
+\end{flushleft}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Programa19_codigo.png}
+    \caption{código programa 19}    
+\end{figure}
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=1.1\linewidth]{Programa19_execucao.png}
+    \caption{execução do programa 19}    
+\end{sidewaysfigure}
+
+
+
+
+
+\end{document}
